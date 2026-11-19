@@ -1,0 +1,441 @@
+/* ==========================================================================
+   Dentz Dental Care (ദന്താശുപത്രി) - Ultra-Premium Healthcare Experience
+   Creative Director & Motion Design System
+   ========================================================================== */
+
+/* Root Custom Properties */
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Plus Jakarta Sans', var(--font-sans);
+  --font-malayalam: 'Noto Sans Malayalam', var(--font-sans);
+
+  /* Primary Palette */
+  --color-obsidian: #060D17;
+  --color-obsidian-surface: #0B1728;
+  --color-obsidian-card: #102138;
+  --color-teal-50: #F0FDFA;
+  --color-teal-100: #CCFBF1;
+  --color-teal-500: #14B8A6;
+  --color-teal-600: #0D9488;
+  --color-teal-700: #0F766E;
+  --color-teal-800: #115E59;
+  --color-teal-900: #134E4A;
+  --color-mint: #2DD4BF;
+  --color-gold: #F59E0B;
+  --color-gold-light: #FDE68A;
+
+  /* Image Comparison Slider */
+  --slider-pos: 50%;
+}
+
+/* Base Smooth Scrolling & Lenis Support */
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+  border: 2px solid #F1F5F9;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0F766E;
+}
+
+/* Hide Scrollbars utility (mobile horizontal scroll carousels) */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Safe Area Padding for Mobile Bottom Bar */
+.safe-bottom {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+/* ==========================================================================
+   Atmospheric & Visual Effects (Glass, Glows, Gradients)
+   ========================================================================== */
+
+/* Modern Subtle Mesh Gradients */
+.bg-mesh-light {
+  background-color: #FAFAFA;
+  background-image: 
+    radial-gradient(at 10% 10%, rgba(20, 184, 166, 0.08) 0px, transparent 50%),
+    radial-gradient(at 90% 20%, rgba(245, 158, 11, 0.05) 0px, transparent 40%),
+    radial-gradient(at 50% 90%, rgba(13, 148, 136, 0.06) 0px, transparent 50%);
+}
+
+.bg-mesh-dark {
+  background-color: #060D17;
+  background-image: 
+    radial-gradient(at 20% 15%, rgba(15, 118, 110, 0.25) 0px, transparent 50%),
+    radial-gradient(at 85% 30%, rgba(20, 184, 166, 0.15) 0px, transparent 50%),
+    radial-gradient(at 50% 85%, rgba(245, 158, 11, 0.08) 0px, transparent 50%);
+}
+
+/* Glassmorphism Panels */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
+}
+
+.glass-card-dark {
+  background: rgba(16, 33, 56, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(203, 213, 225, 0.6);
+}
+
+/* Subtle Shimmer & Light Sweep on Buttons */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.75s ease-in-out;
+}
+
+.btn-shimmer:hover::after {
+  transform: translateX(100%);
+}
+
+/* Floating Animation for Visual Accents */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-float {
+  animation: floatGentle 5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatReverse 6s ease-in-out 1.5s infinite;
+}
+
+/* Glowing Pulsing Beacon */
+@keyframes ringPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(20, 184, 166, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0);
+  }
+}
+
+.pulse-ring-teal {
+  animation: ringPulse 2.5s infinite;
+}
+
+/* ==========================================================================
+   Interactive Before & After Smile Slider
+   ========================================================================== */
+
+.comparison-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  touch-action: pan-y;
+  border-radius: 1.5rem;
+}
+
+.comparison-image-before,
+.comparison-image-after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.comparison-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: inset(0 calc(100% - var(--slider-pos, 50%)) 0 0);
+  will-change: clip-path;
+}
+
+.comparison-handle-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--slider-pos, 50%);
+  width: 2px;
+  background: #FFFFFF;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  transform: translateX(-50%);
+  pointer-events: none;
+  will-change: left;
+  z-index: 20;
+}
+
+.comparison-handle-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background: #0F766E;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(15, 118, 110, 0.6), 0 0 0 3px #FFFFFF;
+  pointer-events: none;
+  z-index: 21;
+}
+
+.comparison-range-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  margin: 0;
+  z-index: 30;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* ==========================================================================
+   Infinite Marquee
+   ========================================================================== */
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  animation: marqueeScroll 32s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ==========================================================================
+   Interactive Bento Cards & Doctor Cards Lift
+   ========================================================================== */
+
+.bento-card,
+.doctor-card,
+.review-card,
+.tech-card {
+  will-change: transform, box-shadow;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+}
+
+@media (hover: hover) {
+  .bento-card:hover {
+    transform: translateY(-6px);
+  }
+  .doctor-card:hover {
+    transform: translateY(-6px);
+  }
+  .review-card:hover {
+    transform: translateY(-5px);
+  }
+  .tech-card:hover {
+    transform: translateY(-5px);
+  }
+}
+
+/* Glow Border on Dark Doctor Cards */
+.doctor-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.4), transparent 50%, rgba(245, 158, 11, 0.2));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.doctor-card:hover::before {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Treatment Finder / Smile Assessment Interactive Card Styles
+   ========================================================================== */
+
+.concern-pill {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.concern-pill.is-active {
+  background-color: #0F766E !important;
+  color: #FFFFFF !important;
+  border-color: #0F766E !important;
+  box-shadow: 0 4px 14px rgba(15, 118, 110, 0.25);
+  transform: translateY(-2px);
+}
+
+.concern-pill.is-active .concern-icon {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   Mobile Drawer Transitions
+   ========================================================================== */
+
+#mobile-drawer {
+  transition: opacity 0.3s ease;
+}
+
+#mobile-drawer.is-open {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+#mobile-drawer #mobile-drawer-panel {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#mobile-drawer.is-open #mobile-drawer-panel {
+  transform: translateX(0);
+}
+
+/* ==========================================================================
+   FAQ Accordion Transitions
+   ========================================================================== */
+
+.faq-content {
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.faq-icon {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   Hero Visual Image Framing
+   ========================================================================== */
+
+.hero-visual-frame {
+  position: relative;
+  border-radius: 2.25rem;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(15, 118, 110, 0.1);
+}
+
+/* High Contrast & Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .marquee-track {
+    animation: none !important;
+  }
+}
