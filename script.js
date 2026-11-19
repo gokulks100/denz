@@ -494,10 +494,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-      navbar.classList.add('shadow-md', 'bg-white/95', 'py-1');
+    if (window.scrollY > 15) {
+      navbar.classList.add('shadow-md', 'bg-white/98');
+      navbar.classList.remove('bg-white/90');
     } else {
-      navbar.classList.remove('shadow-md', 'bg-white/95', 'py-1');
+      navbar.classList.remove('shadow-md', 'bg-white/98');
+      navbar.classList.add('bg-white/90');
     }
   }, { passive: true });
 
