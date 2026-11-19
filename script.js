@@ -130,19 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ease: 'back.out(1.4)'
       }, '-=0.5');
 
-    // Subtle Hero Parallax (Desktop)
-    if (!isMobile) {
-      gsap.to('.hero-parallax-element', {
-        yPercent: 12,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '#home',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true
-        }
-      });
-    }
 
     // Generic Section Header Reveals
     gsap.utils.toArray('.section-header').forEach((header) => {
